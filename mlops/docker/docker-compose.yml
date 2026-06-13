@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  api:
+    build: 
+      context: ../../
+      dockerfile: mlops/docker/Dockerfile.api
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - POSTGIS_URL=postgresql://geo:geo@postgis:5432/geosentinel
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    depends_on:
+      - redis
+      - postgis
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  postgis:
+    image: postgis/postgis:15-3.3-alpine
+    environment:
+      - POSTGRES_USER=geo
+      - POSTGRES_PASSWORD=geo
+      - POSTGRES_DB=geosentinel
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+
+volumes:
+  postgis_data:

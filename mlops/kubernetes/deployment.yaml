@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geosentinel-api
+  labels:
+    app: geosentinel
+    component: api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: geosentinel
+      component: api
+  template:
+    metadata:
+      labels:
+        app: geosentinel
+        component: api
+    spec:
+      containers:
+      - name: api
+        image: geosentinel/api:v0.1.0
+        ports:
+        - containerPort: 8000
+        env:
+        - name: POSTGIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: url
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+            memory: "16Gi"
+          requests:
+            memory: "8Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: geosentinel-api-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: geosentinel
+    component: api
+  ports:
+  - port: 80
+    targetPort: 8000
