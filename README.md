@@ -1,6 +1,6 @@
 <div align="center">
   
-# 🌍 GeoSentinel-X
+# GeoSentinel-X
 ### Foundation Models for Multi-Temporal Earth Intelligence
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/release/python-3100/)
@@ -14,7 +14,7 @@
 
 ---
 
-## 🚀 The Core Vision
+## The Core Vision
 
 GeoSentinel-X is designed to significantly exceed the capabilities of existing Earth Observation datasets like SEN12MS. It is a fully automated, multi-petabyte scale system capable of answering:
 
@@ -26,7 +26,7 @@ GeoSentinel-X is designed to significantly exceed the capabilities of existing E
 
 ---
 
-## 🏗️ Project Architecture & Tree
+## Project Architecture & Tree
 
 The platform is designed to scale from local experimentation to Kubernetes-based global production.
 For a deep dive into the system design, see [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md).
@@ -60,7 +60,7 @@ geosentinel-x/
 
 ---
 
-## 🧠 Capabilities
+## Capabilities
 
 GeoSentinel-X relies on a multi-branch Vision Transformer (ViT) pre-trained via Masked Autoencoders (MAE) and self-supervised learning (DINOv2) to fuse:
 1. **Sentinel-1 SAR** (VV, VH, Textures)
@@ -76,7 +76,7 @@ GeoSentinel-X relies on a multi-branch Vision Transformer (ViT) pre-trained via 
 
 ---
 
-## 🤖 The GeoLLM Copilot
+## The GeoLLM Copilot
 
 Integrated directly into the Next.js UI is the **GeoLLM Copilot**. Powered by an LLM RAG agent (e.g., Llama 3), users can select a bounding box on the Deck.gl map and ask:
 > *"Why is the vegetation decreasing in the eastern sector over the last 3 years?"*
@@ -85,7 +85,7 @@ The agent analyzes the underlying ViT latent representations, GradCAM heatmaps, 
 
 ---
 
-## 💻 Quick Start (Development)
+## Quick Start (Development)
 
 ### 1. Python Environment (Backend)
 ```bash
@@ -118,7 +118,7 @@ docker-compose -f mlops/docker/docker-compose.yml up --build
 
 ---
 
-## 🎯 Success Criteria & Research Metrics
+## Success Criteria & Research Metrics
 * LULC Accuracy >95%
 * Segmentation IoU >90%
 * Change Detection F1 >92%
@@ -127,5 +127,5 @@ docker-compose -f mlops/docker/docker-compose.yml up --build
 
 ---
 
-## 📄 License
+## License
 This project is licensed under the [MIT License](LICENSE).
